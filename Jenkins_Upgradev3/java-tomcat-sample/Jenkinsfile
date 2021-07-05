@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy in Staging Environment'){
             steps{
-                echo "Now Archiving the Artifacts...."
+                build job: 'Deploy_Application_Staging_Env'
  
             }
             
@@ -24,7 +24,7 @@ pipeline {
                 timeout(time:5, unit:'DAYS'){
                     input message:'Approve PRODUCTION Deployment?'
                 }
-                echo "Now Archiving the Artifacts...."
+                build job: 'Deploy_Application_Prod_Env'
             }
         }
     }
